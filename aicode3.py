@@ -11,7 +11,7 @@ dataset_dir = "Data"
 
 # Define the parameters
 input_shape = (224, 224, 3)
-num_classes = 3
+num_classes = 30
 batch_size = 32
 epochs = 10
 
