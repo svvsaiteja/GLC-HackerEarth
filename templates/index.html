@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Tracking</title>
+</head>
+<body>
+    <img src="{{ url_for('video_feed') }}" alt="Hand Tracking">
+
+    <div>
+        <h2>Predicted Label:</h2>
+        <p id="predicted_label"></p>
+    </div>
+
+    <script>
+        async function updateLabel() {
+            const response = await fetch("/get_label");
+            const data = await response.json();
+            document.getElementById("predicted_label").innerText = data.label;
+        }
+
+        setInterval(updateLabel, 1000);  // Update label every second
+    </script>
+</body>
+</html>
