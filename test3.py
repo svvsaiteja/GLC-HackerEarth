@@ -8,7 +8,7 @@ import math
 
 app = Flask(__name__)
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 detector = HandDetector(maxHands=1)
 
 classifier = Classifier("Image_classifier_model.h5", "Model/labels.txt")
@@ -18,8 +18,8 @@ imgSize = 300
 
 labels = [
     "A", "B", "C", "D", "E", "F", "G", "H", "Hello", "I", "I Love You",
-    "J", "K", "L", "M", "N", "No", "O", "P", "Q", "R", "S", "T", "U",
-    "V", "W", "X", "Y", "Yes", "Z",
+    "J", "K", "L", "M", "N", "No", "O", "P", "Q", "R", "S","Space", "T", "U",
+    "V", "W", "X", "Y", "Yes", "Z"
 ]
 
 predicted_label = "Initial_Label"
