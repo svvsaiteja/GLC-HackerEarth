@@ -8,7 +8,7 @@ import math
 
 app = Flask(__name__)
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
 
 classifier = Classifier("Image_classifier_model.h5", "Model/labels.txt")
@@ -51,6 +51,8 @@ def generate_frames():
                     imgWhite[:, wGap : wCal + wGap] = imgResize
                     prediction, index = classifier.getPrediction(imgWhite, draw=False)
                     predicted_label = labels[index]
+                    if(predicted_label=="Space"):
+                        predicted_label = " "
 
                 else:
                     k = imgSize / w
@@ -61,6 +63,8 @@ def generate_frames():
                     imgWhite[hGap : hCal + hGap, :] = imgResize
                     prediction, index = classifier.getPrediction(imgWhite, draw=False)
                     predicted_label = labels[index]
+                    if(predicted_label=="Space"):
+                        predicted_label = " "
 
                 cv2.putText(
                     imgOutput,
